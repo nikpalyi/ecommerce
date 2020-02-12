@@ -1,6 +1,6 @@
 import firebase from 'firebase/app';
-import firebase from 'firebase/firestore';
-import firebase from 'firebase/auth';
+import 'firebase/firestore';
+import 'firebase/auth';
 
 const config = {
   apiKey: 'AIzaSyB6LkdMyPP5bVw4xDNy6hv9mZvX_A_xZ4A',
@@ -22,6 +22,6 @@ export const firestore = firebase.firestore();
 const provider = new firebase.auth.GoogleAuthProvider();
 // we always want to trigger the Google pop-up whenever we use Google auth provider for authentication and sign-in:
 provider.setCustomParameters({ prompt: 'select_account' });
-export const signWithGoogle = () => auth.signInWithPopup(provider);
+export const signInWithGoogle = () => auth.signInWithPopup(provider);
 
 export default firebase;
