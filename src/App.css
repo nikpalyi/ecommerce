@@ -7,3 +7,9 @@ a {
   text-decoration: none;
   color: black;
 }
+
+/* universial selector and padding, elements(buttons are in line with the input at sign-in*/
+/* paading, margin, border don't affect the elements line */
+* {
+  box-sizing: border-box;
+}
