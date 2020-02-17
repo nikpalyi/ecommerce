@@ -21,7 +21,7 @@ export const createUserProfileDocument = async (userAuth, additionalData) => {
 
   const snapShot = await userRef.get();
 
-  //create snapshot, the data, storing data in Firebase:
+  //create a new object, snapshot, the data, storing data in Firebase:
   if (!snapShot.exists) {
     const { displayName, email } = userAuth;
     const createdAt = new Date();

@@ -20,9 +20,32 @@ class App extends React.Component {
 
   unsubscribeFromAuth = null;
 
+  //user sign-in:
   componentDidMount() {
-    this.unsubscribeFromAuth = auth.onAuthStateChanged(async user => {
-      createUserProfileDocument(user);
+    this.unsubscribeFromAuth = auth.onAuthStateChanged(async userAuth => {
+      //check if user signs in:
+      if (userAuth) {
+        //if there is document, we will get back to userRef, if not we create a new object in firebase.js at try/catch
+        const userRef = await createUserProfileDocument(userAuth);
+        // then subscribe to userRef, also get back the first state of data
+        userRef.onSnapshot(snapShot => {
+          //setState is ASYNC, so console.log is passed as second arg
+          this.setState(
+            {
+              currentUser: {
+                id: snapShot.id,
+                ...snapShot.data()
+              }
+            },
+            () => {
+              //just checking currentUSer: it has id, and properties combined:
+              console.log(this.state);
+            }
+          );
+        });
+      } else {
+        this.setState({ currentUser: userAuth });
+      }
     });
   }
 
