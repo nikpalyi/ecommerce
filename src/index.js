@@ -4,10 +4,15 @@ import './index.css';
 import App from './App';
 import { BrowserRouter } from 'react-router-dom';
 
+//for redux, Provider is the parent for everything at Redux
+import { Provider } from 'react-redux';
+
 ReactDOM.render(
-  <BrowserRouter>
-    {' '}
-    <App />
-  </BrowserRouter>,
+  <Provider>
+    <BrowserRouter>
+      {' '}
+      <App />
+    </BrowserRouter>
+  </Provider>,
   document.getElementById('root')
 );
