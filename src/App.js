@@ -38,7 +38,7 @@ class App extends React.Component {
               }
             },
             () => {
-              //just checking currentUSer: it has id, and properties combined:
+              //just checking currentUser: it has id, and properties combined:
               console.log(this.state);
             }
           );
@@ -56,7 +56,7 @@ class App extends React.Component {
   render() {
     return (
       <div>
-        <Header currentUser={this.state.currentUser} />
+        <Header />
         <Switch>
           <Route exact path='/' component={HomePage} />
           <Route path='/shop' component={ShopPage} />
