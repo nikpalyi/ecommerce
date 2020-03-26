@@ -3,7 +3,6 @@ import React from 'react';
 import {
   HeaderContainer,
   OptionsContainer,
-  OptionDiv,
   OptionLink,
   LogoContainer
 } from './header.styles';
