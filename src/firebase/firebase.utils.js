@@ -18,8 +18,10 @@ export const createUserProfileDocument = async (userAuth, additionalData) => {
   if (!userAuth) return;
 
   const userRef = firestore.doc(`users/${userAuth.uid}`);
+  //const collectionRef = firestore.collection('users');
 
   const snapShot = await userRef.get();
+  //const collectionSnapshot =await collectionRef.get();
 
   //create a new object, snapshot, the data, storing data in Firebase:
   if (!snapShot.exists) {
@@ -38,6 +40,10 @@ export const createUserProfileDocument = async (userAuth, additionalData) => {
     }
   }
   return userRef;
+};
+
+export const addCollectionAndDocuments = ( collectionKey, objectsToAdd) => {
+  const collectionRef = firestore.collection(collectionKey)
 };
 
 firebase.initializeApp(config);
