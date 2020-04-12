@@ -13,6 +13,8 @@ const config = {
   measurementId: 'G-7CVEQ85M01'
 };
 
+firebase.initializeApp(config);
+
 //take user auth object from auth library and store in DB:
 export const createUserProfileDocument = async (userAuth, additionalData) => {
   if (!userAuth) return;
@@ -67,12 +69,13 @@ export const convertCollectionsSnaphotToMap = (collections) => {
 
     }
   });
-  console.log(transformedCollection);
+  return transformedCollection.reduce((accumulator, collection) => {
+    accumulator[collection.title.toLowerCase()] = collection;
+    return accumulator;
+  } , {});
 }
 
 
-
-firebase.initializeApp(config);
 
 export const auth = firebase.auth();
 export const firestore = firebase.firestore();
